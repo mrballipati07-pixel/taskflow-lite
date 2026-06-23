@@ -12,7 +12,8 @@ export function validateTask(taskText) {
     if (text.length < 3) {
         return {
             valid: false,
-            message: "Task must be at least 3 characters"
+            message:
+                "Task must be at least 3 characters"
         };
     }
 

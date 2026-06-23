@@ -15,11 +15,13 @@ export function loadTasks() {
         return data
             ? JSON.parse(data)
             : [];
+
     } catch (error) {
         console.error(
             "Failed to load tasks:",
             error
         );
+
         return [];
     }
 }

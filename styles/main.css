@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background: #f4f6f9;
     min-height: 100vh;
     padding: 30px 15px;
@@ -13,12 +13,12 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 850px;
     margin: auto;
     background: white;
     padding: 25px;
     border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 .header {
@@ -28,19 +28,26 @@ body {
     margin-bottom: 20px;
 }
 
+.header h1 {
+    color: #333;
+}
+
 #themeBtn {
     border: none;
+    background: #4f46e5;
+    color: white;
     padding: 10px 15px;
     border-radius: 8px;
     cursor: pointer;
 }
 
-.search-box input,
-#taskInput,
-#dueDate {
+.search-box {
+    margin-bottom: 15px;
+}
+
+.search-box input {
     width: 100%;
     padding: 12px;
-    margin-bottom: 10px;
     border: 2px solid #ddd;
     border-radius: 8px;
 }
@@ -52,35 +59,34 @@ body {
     margin-bottom: 20px;
 }
 
+#taskInput,
+#dueDate {
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+
 #addBtn {
     border: none;
     background: #4f46e5;
     color: white;
     border-radius: 8px;
     cursor: pointer;
+    font-weight: bold;
 }
 
-.filters {
-    display: flex;
-    gap: 10px;
-    margin: 15px 0;
+#addBtn:hover,
+#themeBtn:hover {
+    opacity: 0.9;
 }
 
-.filter-btn {
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 8px;
-}
-
-.filter-btn.active {
-    background: #4f46e5;
-    color: white;
+.progress-section {
+    margin-bottom: 20px;
 }
 
 .progress-container {
     width: 100%;
-    height: 12px;
+    height: 14px;
     background: #ddd;
     border-radius: 20px;
     overflow: hidden;
@@ -90,16 +96,34 @@ body {
     width: 0%;
     height: 100%;
     background: #22c55e;
-    transition: .3s;
+    transition: width 0.3s;
 }
 
 #progressText {
     margin-top: 8px;
-    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.filter-btn.active {
+    background: #4f46e5;
+    color: white;
 }
 
 #taskCounter {
-    margin: 15px 0;
+    margin-bottom: 15px;
     font-weight: bold;
 }
 
@@ -108,14 +132,15 @@ body {
 }
 
 #taskList li {
+    background: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #fafafa;
-    margin-bottom: 12px;
-    padding: 15px;
-    border-radius: 10px;
-    animation: fadeIn .3s ease;
+    animation: fadeIn 0.3s ease;
 }
 
 .task-info {
@@ -153,7 +178,7 @@ body {
 
 .completed {
     text-decoration: line-through;
-    opacity: .7;
+    opacity: 0.7;
 }
 
 .overdue {
@@ -164,7 +189,7 @@ body {
 #emptyState {
     text-align: center;
     margin-top: 20px;
-    color: gray;
+    color: #777;
 }
 
 body.dark {
@@ -184,6 +209,7 @@ body.dark input {
 
 body.dark #taskList li {
     background: #2a2a2a;
+    border-color: #444;
 }
 
 @keyframes fadeIn {
@@ -191,14 +217,13 @@ body.dark #taskList li {
         opacity: 0;
         transform: translateY(8px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-@media(max-width:700px) {
+@media (max-width: 700px) {
 
     .task-form {
         grid-template-columns: 1fr;

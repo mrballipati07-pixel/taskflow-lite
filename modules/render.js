@@ -16,7 +16,9 @@ export function renderTasks(
         emptyState.style.display = "none";
     }
 
-    const today = new Date().toISOString().split("T")[0];
+    const today = new Date()
+        .toISOString()
+        .split("T")[0];
 
     tasks.forEach((task, index) => {
 
@@ -31,18 +33,24 @@ export function renderTasks(
             <div class="task-info">
 
                 <span class="${
-                    task.completed ? "completed" : ""
+                    task.completed
+                        ? "completed"
+                        : ""
                 }">
                     ${task.text}
                 </span>
 
                 ${
                     task.dueDate
-                        ? `<small class="${
-                              overdue ? "overdue" : ""
-                          }">
-                              Due: ${task.dueDate}
-                           </small>`
+                        ? `
+                        <small class="${
+                            overdue
+                                ? "overdue"
+                                : ""
+                        }">
+                            Due: ${task.dueDate}
+                        </small>
+                        `
                         : ""
                 }
 
@@ -53,7 +61,11 @@ export function renderTasks(
                 <button
                     class="done-btn"
                     data-toggle="${index}">
-                    ${task.completed ? "Undo" : "Done"}
+                    ${
+                        task.completed
+                            ? "Undo"
+                            : "Done"
+                    }
                 </button>
 
                 <button
@@ -75,7 +87,9 @@ export function renderTasks(
     });
 
     const completedCount =
-        tasks.filter(task => task.completed).length;
+        tasks.filter(
+            task => task.completed
+        ).length;
 
     taskCounter.textContent =
         `Total: ${tasks.length} | Completed: ${completedCount}`;
@@ -83,30 +97,51 @@ export function renderTasks(
     taskList
         .querySelectorAll("[data-toggle]")
         .forEach(btn => {
-            btn.addEventListener("click", () => {
-                toggleTask(
-                    Number(btn.dataset.toggle)
-                );
-            });
+
+            btn.addEventListener(
+                "click",
+                () => {
+                    toggleTask(
+                        Number(
+                            btn.dataset.toggle
+                        )
+                    );
+                }
+            );
+
         });
 
     taskList
         .querySelectorAll("[data-delete]")
         .forEach(btn => {
-            btn.addEventListener("click", () => {
-                deleteTask(
-                    Number(btn.dataset.delete)
-                );
-            });
+
+            btn.addEventListener(
+                "click",
+                () => {
+                    deleteTask(
+                        Number(
+                            btn.dataset.delete
+                        )
+                    );
+                }
+            );
+
         });
 
     taskList
         .querySelectorAll("[data-edit]")
         .forEach(btn => {
-            btn.addEventListener("click", () => {
-                editTask(
-                    Number(btn.dataset.edit)
-                );
-            });
+
+            btn.addEventListener(
+                "click",
+                () => {
+                    editTask(
+                        Number(
+                            btn.dataset.edit
+                        )
+                    );
+                }
+            );
+
         });
 }
